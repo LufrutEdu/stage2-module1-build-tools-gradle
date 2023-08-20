@@ -1,19 +1,27 @@
 plugins {
+    id 'java'
+    id 'java-library'
+    id 'maven-publish'
     // id for library
     // id for maven to publish jar to local repository
 }
 
 java {
+    sourceCompatibility '1.8'
 // provide sourceCompatibility
 }
 
 repositories {
+    mavenCentral()
 // provide repository, where required dependencies are located
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
+            group = 'com.mjcschool'
+            version = '1.3.5'
+            artifactId = 'utils'
 // provide groupId
 // provide artifactId
 // provide version
@@ -24,13 +32,23 @@ publishing {
 }
 
 //add Apache Apache Commons Lang 3.10 (or higher) dependency
+dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+
+    implementation 'org.apache.commons:commons-lang3:3.10'
+
+}
 
 jar {
     manifest {
+        attributes(
+                'Implementation-Title': 'utils',
+                'Implementation-Version': '1.3.5',
+        )
         //provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
     }
 }
-
 test {
     useJUnitPlatform()
 }
