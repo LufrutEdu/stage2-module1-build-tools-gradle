@@ -14,6 +14,6 @@ public class Utils {
             else return false;
         };
         return args.stream()
-                .anyMatch(check);
+                .noneMatch(check);
     }
 }
