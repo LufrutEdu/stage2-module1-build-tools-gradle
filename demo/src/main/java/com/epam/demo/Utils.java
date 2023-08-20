@@ -13,7 +13,7 @@ public class Utils {
             else if(str == null) return true;
             else return false;
         };
-        return args.stream()
-                .noneMatch(check);
+        return !args.stream()
+                .anyMatch(check);
     }
 }
