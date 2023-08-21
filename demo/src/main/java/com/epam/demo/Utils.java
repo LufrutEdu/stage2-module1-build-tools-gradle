@@ -15,7 +15,7 @@ public class Utils {
         };
         for (String item:
              args) {
-            if(item.isEmpty()) return false;
+            if(item == null) return false;
             if(!check.test(item)) return false;
         }
         return true;
