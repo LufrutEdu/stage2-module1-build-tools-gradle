@@ -1,5 +1,6 @@
 package com.epam.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -12,8 +13,12 @@ public class Utils {
             else if(str.isBlank()) return false;
             else return true;
         };
-        return args.stream()
-                .allMatch(check)
-                && !args.stream().anyMatch(String::isEmpty);
+        for (String item:
+             args) {
+            if(item.isEmpty()) return false;
+            if(!check.test(item)) return false;
+        }
+        return true;
     }
 }
+
